@@ -1,5 +1,6 @@
 import logging
 
+import allure
 import pytest
 
 from selenium import webdriver
@@ -26,8 +27,7 @@ def app(request):
         )
     elif headless_mode == "false":
         fixture = Application(
-            webdriver.Chrome(ChromeDriverManager().install()),
-            base_url,
+            webdriver.Chrome(ChromeDriverManager().install()), base_url,
         )
     else:
         raise pytest.UsageError("--headless should be true or false")
@@ -53,7 +53,7 @@ def pytest_addoption(parser):
         action="store",
         default="true",
         help="enter 'true' if you want run tests in headless mode of browser,\n"
-             "enter 'false' - if not",
+        "enter 'false' - if not",
     ),
     parser.addoption(
         "--base-url",
@@ -62,14 +62,29 @@ def pytest_addoption(parser):
         help="enter base_url",
     ),
     parser.addoption(
-        "--username",
-        action="store",
-        default="nadi",
-        help="enter username",
+        "--username", action="store", default="nadi", help="enter username",
     ),
     parser.addoption(
-        "--password",
-        action="store",
-        default="Nadi123456!",
-        help="enter password",
+        "--password", action="store", default="Nadi123456!", help="enter password",
     ),
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    rep = outcome.get_result()
+    if rep.when == "call" and rep.failed:
+        try:
+            if "app" in item.fixturenames:
+                web_driver = item.funcargs["app"]
+            else:
+                logger.error("Fail to take screen-shot")
+                return
+            logger.info("Screen-shot done")
+            allure.attach(
+                web_driver.driver.get_screenshot_as_png(),
+                name="screenshot",
+                attachment_type=allure.attachment_type.PNG,
+            )
+        except Exception as e:
+            logger.error("Fail to take screen-shot: {}".format(e))
