@@ -1,6 +1,7 @@
-[![Build Status](https://app.travis-ci.com/berpress/ui_dress_tests.svg?branch=main)](https://app.travis-ci.com/berpress/ui_dress_tests)# Тесты для приложения ["Курсы"](https://qacoursemoodle.innopolis.university)
+[![Build Status](https://app.travis-ci.com/berpress/ui_dress_tests.svg?branch=main)](https://app.travis-ci.com/berpress/ui_dress_tests)
 
-![Курсы](logo.jpg)
+# Тесты для приложения ["Курсы"](https://qacoursemoodle.innopolis.university)
+
 ## Установка
 ***
 1. Создайте отдельную директорию на локальном компьютере
