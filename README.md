@@ -1,4 +1,4 @@
-# Тесты для приложения ["Курсы"](https://qacoursemoodle.innopolis.university)
+[![Build Status](https://app.travis-ci.com/berpress/ui_dress_tests.svg?branch=main)](https://app.travis-ci.com/berpress/ui_dress_tests)# Тесты для приложения ["Курсы"](https://qacoursemoodle.innopolis.university)
 
 ![Курсы](logo.jpg)
 ## Установка
