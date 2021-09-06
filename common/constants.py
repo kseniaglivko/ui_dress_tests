@@ -8,6 +8,12 @@ class AccountConstants:
     CREATE_COURSE = "Добавить курс"
 
 
+class CourseConstants:
+    DELETED_COURSE = "был полностью удален"
+    FULLNAME_ERROR = "- Заполните поле"
+    SHORTNAME_ERROR = "- Не указано краткое название"
+
+
 class CreateCourseConstants:
     SECTION_NUMBER = 52
     COURSE_LANGUAGE = "ru"

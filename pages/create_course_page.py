@@ -1,6 +1,4 @@
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from pages.base_page import BasePage
 from locators.create_course_page_locators import CreateCoursePageLocators
@@ -134,19 +132,6 @@ class CreateCoursePage(BasePage):
         self.input_teacher_name(data.teacher_name)
         self.input_student_name(data.student_name)
         self.submit_changes()
-
-    def is_created(self, wait_time=10):
-        header_course_info_elements = WebDriverWait(self.app.driver, wait_time).until(
-            EC.presence_of_all_elements_located(
-                CreateCoursePageLocators.NEW_COURSE_HEADER
-            ),
-            message=f"Can't find elements by locator "
-            f"{CreateCoursePageLocators.NEW_COURSE_HEADER}",
-        )
-        if len(header_course_info_elements) == 2:
-            return True
-        else:
-            return False
 
     def create_course_page(self):
         return self.find_element(CreateCoursePageLocators.CREATE_COURSE_HEADER).text
