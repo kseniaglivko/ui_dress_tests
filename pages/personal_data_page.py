@@ -1,10 +1,19 @@
+import logging
+
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.base_page import BasePage
-from locators.personal_data_page_locators import PersonalDataPageLocators, PersonalDataPageMoreLocators, \
-    PersonalDataPageTagLocators, PersonalDataPageOptionalLocators
+from locators.personal_data_page_locators import (
+    PersonalDataPageLocators,
+    PersonalDataPageMoreLocators,
+    PersonalDataPageTagLocators,
+    PersonalDataPageOptionalLocators,
+)
+
+
+logger = logging.getLogger("moodle")
 
 
 class PersonalDataPage(BasePage):
@@ -48,6 +57,11 @@ class PersonalDataPage(BasePage):
     def user_image_file_add_button(self) -> WebElement:
         return self.find_clickable_element(
             PersonalDataPageLocators.USER_IMAGE_FILE_ADD_BUTTON
+        )
+
+    def download_file_section(self) -> WebElement:
+        return self.find_clickable_element(
+            PersonalDataPageLocators.DOWNLOAD_FILE_SECTION
         )
 
     def user_image_file_choose_input(self) -> WebElement:
@@ -97,6 +111,7 @@ class PersonalDataPage(BasePage):
 
     def choose_user_image_file(self, image_file):
         self.click_element(self.user_image_file_add_button())
+        self.click_element(self.download_file_section())
         self.fill_element(self.user_image_file_choose_input(), image_file)
         self.click_element(self.download_file_button())
 
@@ -107,6 +122,17 @@ class PersonalDataPage(BasePage):
         self.click_element(self.submit_button())
 
     def edit_personal_data(self, data):
+        logger.info(
+            f"Editing basic personal data with next values:\n"
+            f"name: {data.name}\n"
+            f"lastname: {data.last_name}\n"
+            f"email: {data.email}\n"
+            f"moodle_net_profile: {data.moodle_net_profile}\n"
+            f"city: {data.city}\n"
+            f"country_code: {data.country_code}\n"
+            f"timezone: {data.timezone}\n"
+            f"about: {data.about}\n"
+        )
         self.input_name(data.name)
         self.input_lastname(data.last_name)
         self.input_email(data.email)
@@ -116,6 +142,7 @@ class PersonalDataPage(BasePage):
         self.select_country(data.country_code)
         self.select_timezone(data.timezone)
         self.input_about(data.about)
+        logger.info("Submitting changes.\n")
         self.submit_changes()
 
     def is_changed(self, wait_time=10):
@@ -128,8 +155,7 @@ class PersonalDataPage(BasePage):
             return True
         else:
             return False
-          
-          
+
     def set_user_image(self, image_file, user_image_description):
         self.choose_user_image_file(image_file)
         self.input_user_image_description(user_image_description)
@@ -145,7 +171,6 @@ class PersonalDataPage(BasePage):
 
 
 class PersonalDataPageMore(BasePage):
-
     def find_open_info(self) -> WebElement:
         return self.find_element(PersonalDataPageMoreLocators.MORE_SECTION_BUTTON)
 
@@ -199,15 +224,18 @@ class PersonalDataPageMore(BasePage):
 
 
 class PersonalDataPageOptional(BasePage):
-
     def find_open_info(self) -> WebElement:
-        return self.find_element(PersonalDataPageOptionalLocators.OPTIONAL_SECTION_BUTTON)
+        return self.find_element(
+            PersonalDataPageOptionalLocators.OPTIONAL_SECTION_BUTTON
+        )
 
     def open_info(self):
         self.click_element(self.find_open_info())
 
     def find_individual_number(self) -> WebElement:
-        return self.find_element(PersonalDataPageOptionalLocators.INDIVIDUAL_NUMBER_INPUT)
+        return self.find_element(
+            PersonalDataPageOptionalLocators.INDIVIDUAL_NUMBER_INPUT
+        )
 
     def individual_number_input(self, individualnumber):
         self.fill_element(self.find_individual_number(), individualnumber)
@@ -266,9 +294,8 @@ class PersonalDataPageOptional(BasePage):
         return False
 
 
-class PersonalDataPageTag(BasePage) :
-
-    def find_open_info(self)  -> WebElement:
+class PersonalDataPageTag(BasePage):
+    def find_open_info(self) -> WebElement:
         return self.find_element(PersonalDataPageTagLocators.TAG_SECTION_BUTTON)
 
     def open_info(self):
