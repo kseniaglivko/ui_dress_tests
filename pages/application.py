@@ -1,8 +1,10 @@
 from pages.base_page import BasePage
 from pages.create_course_page import CreateCoursePage
 from pages.login_page import LoginPage
-from pages.personal_data_page import PersonalDataPage
 from pages.course_page import CoursePage
+from pages.personal_data_page import PersonalDataPage, PersonalDataPageMore, \
+    PersonalDataPageOptional, PersonalDataPageTag
+from pages.sign_up_page import SignUp
 
 
 class Application:
@@ -14,6 +16,10 @@ class Application:
         self.course = CoursePage(self)
         self.create_course = CreateCoursePage(self)
         self.personal_data = PersonalDataPage(self)
+        self.sign_up = SignUp(self)
+        self.personal_data_more = PersonalDataPageMore(self)
+        self.personal_data_optional = PersonalDataPageOptional(self)
+        self.personal_data_tag = PersonalDataPageTag(self)
 
     def open_main_page(self):
         self.driver.get(self.url)

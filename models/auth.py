@@ -13,3 +13,4 @@ class AuthData:
         login = fake.email()
         password = fake.password()
         return AuthData(login, password)
+

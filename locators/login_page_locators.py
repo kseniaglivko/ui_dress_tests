@@ -11,3 +11,4 @@ class LoginPageLocators:
     EXIT = (By.ID, "actionmenuaction-6")
     LOGIN_ERROR = (By.ID, "loginerrormessage")
     USER_MENU_SETTINGS = (By.ID, "actionmenuaction-5")
+    SIGN_UP_BUTTON = (By.CSS_SELECTOR, "#signup > button")

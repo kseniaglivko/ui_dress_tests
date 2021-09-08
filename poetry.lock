@@ -1,4 +1,30 @@
 [[package]]
+name = "allure-pytest"
+version = "2.9.43"
+description = "Allure pytest integration"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+allure-python-commons = "2.9.43"
+pytest = ">=4.5.0"
+six = ">=1.9.0"
+
+[[package]]
+name = "allure-python-commons"
+version = "2.9.43"
+description = "Common module for integrate allure with python-based frameworks"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+attrs = ">=16.0.0"
+pluggy = ">=0.4.0"
+six = ">=1.9.0"
+
+[[package]]
 name = "atomicwrites"
 version = "1.4.0"
 description = "Atomic file writes."
@@ -250,9 +276,17 @@ requests = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "54ebf7f1f309945c0c8cad122fb4d04dea256cb90af2814b3a2d39d75981373c"
+content-hash = "bf3a6c0d6b4b465b00a91e21964c64a3c7e0bbbec96f500728b8480fd7b6b709"
 
 [metadata.files]
+allure-pytest = [
+    {file = "allure-pytest-2.9.43.tar.gz", hash = "sha256:9ba613858a33c6becba539966116be5720c15f8c0427122e03c41082cfaa173a"},
+    {file = "allure_pytest-2.9.43-py3-none-any.whl", hash = "sha256:b2ba613fe33b53924fdef2f21ee72cf14c2cc39a0ee8dadefd5d6ed7c927f430"},
+]
+allure-python-commons = [
+    {file = "allure-python-commons-2.9.43.tar.gz", hash = "sha256:461bdd17c6514e130cfbb01d7060c82821a5ae1d2e049daefe64c4738d865cef"},
+    {file = "allure_python_commons-2.9.43-py3-none-any.whl", hash = "sha256:07e366f099c5ae248a1e8c56713bc9c25316ce8269944b4b038c62d2aacd8dbb"},
+]
 atomicwrites = [
     {file = "atomicwrites-1.4.0-py2.py3-none-any.whl", hash = "sha256:6d1784dea7c0c8d4a5172b6c620f40b6e4cbfdf96d783691f2e1302a7b88e197"},
     {file = "atomicwrites-1.4.0.tar.gz", hash = "sha256:ae70396ad1a434f9c7046fd2dd196fc04b12f9e91ffb859164193be8b6168a7a"},
