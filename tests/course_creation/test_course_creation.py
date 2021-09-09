@@ -1,4 +1,6 @@
 import pytest
+import allure
+from allure_commons.types import AttachmentType
 
 from common.constants import CourseConstants
 from models.auth import AuthData
@@ -46,6 +48,11 @@ class TestCourseCreation:
         app.login.go_to_create_course_page()
         course_info = CreateCourse.random()
         app.create_course.create_course(course_info)
+        allure.attach(
+            app.personal_data.make_screenshot(),
+            name="Course_creation_valid_screenshot",
+            attachment_type=AttachmentType.PNG,
+        )
         assert (
             app.create_course.new_course_page() == course_info.full_course_name
         ), "The course was not created!"
@@ -56,6 +63,11 @@ class TestCourseCreation:
         app.course.confirm_delete()
         delete_confirmation = (
             f"{course_info.short_course_name} {CourseConstants.DELETED_COURSE}"
+        )
+        allure.attach(
+            app.personal_data.make_screenshot(),
+            name="Course_deletion_screenshot",
+            attachment_type=AttachmentType.PNG,
         )
         assert (
             app.course.find_delete_confirmation() == delete_confirmation
@@ -86,6 +98,11 @@ class TestCourseCreation:
         course_info = CreateCourse.random()
         setattr(course_info, field, None)
         app.create_course.create_course(course_info)
+        allure.attach(
+            app.personal_data.make_screenshot(),
+            name="Invalid-course_creation_no_fullname_screenshot",
+            attachment_type=AttachmentType.PNG,
+        )
         assert (
             app.course.find_fullname_error() == CourseConstants.FULLNAME_ERROR
         ), "The course was created without fullname!"
@@ -115,6 +132,11 @@ class TestCourseCreation:
         course_info = CreateCourse.random()
         setattr(course_info, field, None)
         app.create_course.create_course(course_info)
+        allure.attach(
+            app.personal_data.make_screenshot(),
+            name="Invalid-course_creation_no_shortname_screenshot",
+            attachment_type=AttachmentType.PNG,
+        )
         assert (
             app.course.find_shortname_error() == CourseConstants.SHORTNAME_ERROR
         ), "The course was created without shortname!"
