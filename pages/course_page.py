@@ -1,8 +1,11 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+import logging
 
 from pages.base_page import BasePage
 from locators.course_page_locators import CoursePageLocators
+
+logger = logging.getLogger("moodle")
 
 
 class CoursePage(BasePage):
@@ -13,6 +16,7 @@ class CoursePage(BasePage):
 
     def delete_course(self):
         """Find and delete second element."""
+        logger.info("Deleting course.")
         return self.click_element(
             self.find_elements(CoursePageLocators.DELETE_COURSE_BUTTON)[1]
         )
