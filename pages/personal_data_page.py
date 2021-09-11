@@ -178,22 +178,22 @@ class PersonalDataPage(BasePage):
 
 class PersonalDataPageMore(BasePage):
     def find_open_info(self) -> WebElement:
-        return self.find_element(PersonalDataPageMoreLocators.MORE_SECTION_BUTTON)
+        return self.find_clickable_element(PersonalDataPageMoreLocators.MORE_SECTION_BUTTON)
 
     def open_info(self):
         self.click_element(self.find_open_info())
 
     def name_phonetic_input(self) -> WebElement:
-        return self.find_element(PersonalDataPageMoreLocators.NAME_PHONETIC)
+        return self.find_clickable_element(PersonalDataPageMoreLocators.NAME_PHONETIC)
 
     def lastname_phonetic_input(self) -> WebElement:
-        return self.find_element(PersonalDataPageMoreLocators.LAST_NAME_PHONETIC)
+        return self.find_clickable_element(PersonalDataPageMoreLocators.LAST_NAME_PHONETIC)
 
     def middle_name_input(self) -> WebElement:
-        return self.find_element(PersonalDataPageMoreLocators.MIDDLE_NAME)
+        return self.find_clickable_element(PersonalDataPageMoreLocators.MIDDLE_NAME)
 
     def alternate_name_input(self) -> WebElement:
-        return self.find_element(PersonalDataPageMoreLocators.ALTERNATE_NAME)
+        return self.find_clickable_element(PersonalDataPageMoreLocators.ALTERNATE_NAME)
 
     def input_name_phonetic(self, name_phonetic):
         self.fill_element(self.name_phonetic_input(), name_phonetic)
