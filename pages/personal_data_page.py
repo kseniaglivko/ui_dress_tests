@@ -231,7 +231,7 @@ class PersonalDataPageMore(BasePage):
 
 class PersonalDataPageOptional(BasePage):
     def find_open_info(self) -> WebElement:
-        return self.find_element(
+        return self.find_clickable_element(
             PersonalDataPageOptionalLocators.OPTIONAL_SECTION_BUTTON
         )
 
@@ -239,7 +239,7 @@ class PersonalDataPageOptional(BasePage):
         self.click_element(self.find_open_info())
 
     def find_individual_number(self) -> WebElement:
-        return self.find_element(
+        return self.find_clickable_element(
             PersonalDataPageOptionalLocators.INDIVIDUAL_NUMBER_INPUT
         )
 
@@ -247,37 +247,37 @@ class PersonalDataPageOptional(BasePage):
         self.fill_element(self.find_individual_number(), individualnumber)
 
     def find_institution(self) -> WebElement:
-        return self.find_element(PersonalDataPageOptionalLocators.INSTITUTION_INPUT)
+        return self.find_clickable_element(PersonalDataPageOptionalLocators.INSTITUTION_INPUT)
 
     def institution_input(self, institution):
         self.fill_element(self.find_institution(), institution)
 
     def find_department(self) -> WebElement:
-        return self.find_element(PersonalDataPageOptionalLocators.DEPARTMENT_INPUT)
+        return self.find_clickable_element(PersonalDataPageOptionalLocators.DEPARTMENT_INPUT)
 
     def department_input(self, department):
         self.fill_element(self.find_department(), department)
 
     def find_phone1(self) -> WebElement:
-        return self.find_element(PersonalDataPageOptionalLocators.PHONE1_INPUT)
+        return self.find_clickable_element(PersonalDataPageOptionalLocators.PHONE1_INPUT)
 
     def phone1_input(self, phone1):
         self.fill_element(self.find_phone1(), phone1)
 
     def find_phone2(self) -> WebElement:
-        return self.find_element(PersonalDataPageOptionalLocators.PHONE2_INPUT)
+        return self.find_clickable_element(PersonalDataPageOptionalLocators.PHONE2_INPUT)
 
     def phone2_input(self, phone2):
         self.fill_element(self.find_phone2(), phone2)
 
     def find_address(self) -> WebElement:
-        return self.find_element(PersonalDataPageOptionalLocators.ADDRESS_INPUT)
+        return self.find_clickable_element(PersonalDataPageOptionalLocators.ADDRESS_INPUT)
 
     def address_input(self, address):
         self.fill_element(self.find_address(), address)
 
     def submit_button(self) -> WebElement:
-        return self.find_element(PersonalDataPageLocators.SUBMIT_BUTTON)
+        return self.find_clickable_element(PersonalDataPageLocators.SUBMIT_BUTTON)
 
     def submit_changes(self):
         self.click_element(self.submit_button())
@@ -302,13 +302,13 @@ class PersonalDataPageOptional(BasePage):
 
 class PersonalDataPageTag(BasePage):
     def find_open_info(self) -> WebElement:
-        return self.find_element(PersonalDataPageTagLocators.TAG_SECTION_BUTTON)
+        return self.find_clickable_element(PersonalDataPageTagLocators.TAG_SECTION_BUTTON)
 
     def open_info(self):
         self.click_element(self.find_open_info())
 
     def find_tag(self) -> WebElement:
-        return self.find_element(PersonalDataPageTagLocators.TAG_INPUT)
+        return self.find_clickable_element(PersonalDataPageTagLocators.TAG_INPUT)
 
     def tag_input(self, tag):
         self.fill_element(self.find_tag(), tag)
