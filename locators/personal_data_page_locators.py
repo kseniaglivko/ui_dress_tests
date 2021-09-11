@@ -22,6 +22,7 @@ class PersonalDataPageLocators:
     USER_IMAGE_FILE_CHOOSE_INPUT = (By.CSS_SELECTOR, "input[type='file']")
     DOWNLOAD_FILE_BUTTON = (By.CLASS_NAME, "fp-upload-btn")
     USER_PROFILE_DEFAULT_PICTURE = (By.CLASS_NAME, "defaultuserpic")
+    DELETE_CURRENT_IMAGE_BUTTON = (By.CSS_SELECTOR, "label[for='id_deletepicture']")
 
 
 class PersonalDataPageMoreLocators:
