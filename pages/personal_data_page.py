@@ -74,6 +74,11 @@ class PersonalDataPage(BasePage):
             PersonalDataPageLocators.DOWNLOAD_FILE_BUTTON
         )
 
+    def delete_current_image_button(self) -> WebElement:
+        return self.find_clickable_element(
+            PersonalDataPageLocators.DELETE_CURRENT_IMAGE_BUTTON
+        )
+
     def user_image_description_input(self) -> WebElement:
         return self.find_clickable_element(
             PersonalDataPageLocators.USER_IMAGE_DESCRIPTION
@@ -110,6 +115,7 @@ class PersonalDataPage(BasePage):
         self.fill_element(self.about_input(), text)
 
     def choose_user_image_file(self, image_file):
+        self.click_element(self.delete_current_image_button())
         self.click_element(self.user_image_file_add_button())
         self.click_element(self.download_file_section())
         self.fill_element(self.user_image_file_choose_input(), image_file)
