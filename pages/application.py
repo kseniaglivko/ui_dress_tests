@@ -1,9 +1,13 @@
 from pages.base_page import BasePage
-from pages.create_course_page import CreateCoursePage
 from pages.login_page import LoginPage
+from pages.create_course_page import CreateCoursePage
 from pages.course_page import CoursePage
-from pages.personal_data_page import PersonalDataPage, PersonalDataPageMore, \
-    PersonalDataPageOptional, PersonalDataPageTag
+from pages.personal_data_page import (
+    PersonalDataPage,
+    PersonalDataPageMore,
+    PersonalDataPageOptional,
+    PersonalDataPageTag,
+)
 from pages.sign_up_page import SignUp
 
 
@@ -32,3 +36,6 @@ class Application:
 
     def open_course_page(self):
         self.driver.get(self.url + "/course/index.php")
+
+    def open_create_course_page(self):
+        self.driver.get(self.url + "/course/edit.php")

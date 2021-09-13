@@ -1,6 +1,7 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
-import logging
 
 from pages.base_page import BasePage
 from locators.course_page_locators import CoursePageLocators
@@ -26,11 +27,29 @@ class CoursePage(BasePage):
             self.find_element(CoursePageLocators.CONFIRM_DELETE_BUTTON)
         )
 
-    def find_fullname_error(self) -> str:
-        return self.find_element(CoursePageLocators.FULLNAME_ERROR).text
+    def delete_course_by_full_name(self, full_course_name):
+        self.app.open_course_page()
+        self.go_to_manage_courses()
+        self.find_course_full_name(full_course_name)
+        self.delete_course()
+        self.confirm_delete()
 
-    def find_shortname_error(self) -> str:
-        return self.find_element(CoursePageLocators.SHORTNAME_ERROR).text
+    def is_full_course_name_error(self) -> bool:
+        element = self.find_elements(CoursePageLocators.FULLNAME_ERROR)
+        if len(element) > 0:
+            return True
+        return False
+
+    def is_short_course_name_error(self) -> bool:
+        element = self.find_elements(CoursePageLocators.SHORTNAME_ERROR)
+        if len(element) > 0:
+            return True
+        return False
+
+    def is_course_name_error(self):
+        if self.is_short_course_name_error() or self.is_full_course_name_error():
+            return True
+        return False
 
     def find_course_full_name(self, course_name) -> WebElement:
         return self.find_element((By.XPATH, f"//a[text()='{course_name}']"))

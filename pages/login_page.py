@@ -8,7 +8,6 @@ from models.auth import AuthData
 from pages.base_page import BasePage
 from locators.login_page_locators import LoginPageLocators
 from locators.personal_data_page_locators import PersonalDataPageLocators
-from locators.course_page_locators import CoursePageLocators
 
 logger = logging.getLogger("moodle")
 
@@ -67,20 +66,6 @@ class LoginPage(BasePage):
         self.click_element(self.user_menu())
         self.click_element(self.user_menu_settings())
         self.click_element(self.find_element(PersonalDataPageLocators.EDIT_INFO))
-
-    def go_to_administration_page(self):
-        self.click_element(self.user_menu())
-        self.click_element(self.user_menu_account())
-        self.click_element(self.find_element(AccountPageLocators.ADMINISTRATION_BUTTON))
-
-    def administration_page(self):
-        return self.find_element(AccountPageLocators.ADMINISTRATION_HEADER).text
-
-    def go_to_course_page(self):
-        self.click_element(self.find_element(CoursePageLocators.COURSES_HEADER))
-
-    def go_to_create_course_page(self):
-        self.click_element(self.find_element(CoursePageLocators.CREATE_COURSE_LINK))
 
     def auth_login_error(self) -> str:
         return self.find_element(LoginPageLocators.LOGIN_ERROR).text

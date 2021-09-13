@@ -1,13 +1,13 @@
-from selenium.webdriver.remote.webelement import WebElement
+import logging
 
+from selenium.webdriver.remote.webelement import WebElement
 from pages.base_page import BasePage
 from locators.create_course_page_locators import CreateCoursePageLocators
 
+logger = logging.getLogger("moodle")
+
 
 class CreateCoursePage(BasePage):
-    def general_data(self) -> WebElement:
-        return self.find_element(CreateCoursePageLocators.GENERAL_DATA)
-
     def open_course_format_section(self):
         self.click_element(
             self.find_element(CreateCoursePageLocators.COURSE_FORMAT_DATA)
@@ -113,7 +113,9 @@ class CreateCoursePage(BasePage):
         self.click_element(self.save_and_show_button())
 
     def create_course(self, data):
+        logger.info(f'Full course name is "{data.full_course_name}".')
         self.input_full_course_name(data.full_course_name)
+        logger.info(f'Short course name is "{data.short_course_name}".')
         self.input_short_course_name(data.short_course_name)
         self.select_end_day(data.end_day)
         self.select_end_month(data.end_month)
@@ -131,10 +133,8 @@ class CreateCoursePage(BasePage):
         self.input_manager_name(data.manager_name)
         self.input_teacher_name(data.teacher_name)
         self.input_student_name(data.student_name)
+        logger.info("Submitting changes.")
         self.submit_changes()
-
-    def create_course_page(self):
-        return self.find_element(CreateCoursePageLocators.CREATE_COURSE_HEADER).text
 
     def new_course_page(self):
         return self.find_element(CreateCoursePageLocators.NEW_COURSE_HEADER).text
