@@ -2,16 +2,8 @@ class LoginConstants:
     AUTH_ERROR = "Неверный логин или пароль, попробуйте заново."
 
 
-class AccountConstants:
-    ADMINISTRATION = "Администрирование"
-    COURSES = "Курсы"
-    CREATE_COURSE = "Добавить курс"
-
-
 class CourseConstants:
     DELETED_COURSE = "был полностью удален"
-    FULLNAME_ERROR = "- Заполните поле"
-    SHORTNAME_ERROR = "- Не указано краткое название"
 
 
 class CreateCourseConstants:
