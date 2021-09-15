@@ -30,7 +30,7 @@ class CoursePage(BasePage):
     def delete_course_by_full_name(self, full_course_name):
         self.app.open_course_page()
         self.go_to_manage_courses()
-        self.find_course_full_name(full_course_name)
+        self.find_course_by_full_name(full_course_name)
         self.delete_course()
         self.confirm_delete()
 
