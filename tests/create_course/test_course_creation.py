@@ -1,12 +1,11 @@
 import pytest
 
 from common.constants import CourseConstants
-from models.auth import AuthData
 from models.create_course import CreateCourse as CC
 
 
 class TestCourseCreation:
-    def test_valid_course_creation(self, app):
+    def test_valid_course_creation(self, app, auth):
         """
         Steps
         1. Authorize under admin.
@@ -33,12 +32,6 @@ class TestCourseCreation:
         17. Confirm deletion by clicking «Удалить».
         18. Check for text "{the new course name} был полностью удален".
         """
-        app.open_main_page()
-        if not app.login.is_auth():
-            app.open_auth_page()
-            data = AuthData(login="admin", password="Vjcrdf2!")
-            app.login.auth(data)
-            assert app.login.is_auth(), "You are not auth"
         app.open_create_course_page()
         course_info = CC.random()
         app.create_course.create_course(course_info)
@@ -57,24 +50,16 @@ class TestCourseCreation:
         "full_course_name, short_course_name",
         [[CC.random().full_course_name, None], [None, CC.random().short_course_name]],
     )
-    def test_invalid_course_creation(self, app, full_course_name, short_course_name):
+    def test_invalid_course_creation(self, app, auth, full_course_name, short_course_name):
         """
         Steps
         1. Authorize under admin.
-        2. Go to Administration page.
-        3. Go to Courses tab.
-        4. Go to Create Course page.
+        2. Go to Create Course page.
         3. Do not fill in the required field  «Полное название курса».
         4. Fill in field «Краткое название курса».
         5. Click button «Сохранить и показать».
         6. Check for text "- Заполните поле" или "- Не указано краткое название".
         """
-        app.open_main_page()
-        if not app.login.is_auth():
-            app.open_auth_page()
-            data = AuthData(login="admin", password="Vjcrdf2!")
-            app.login.auth(data)
-            assert app.login.is_auth(), "You are not auth"
         app.open_create_course_page()
         course_info = CC.random()
         setattr(course_info, "full_course_name", full_course_name)

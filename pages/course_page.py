@@ -51,7 +51,7 @@ class CoursePage(BasePage):
             return True
         return False
 
-    def find_course_full_name(self, course_name) -> WebElement:
+    def find_course_by_full_name(self, course_name) -> WebElement:
         return self.find_element((By.XPATH, f"//a[text()='{course_name}']"))
 
     def find_delete_confirmation(self) -> str:
