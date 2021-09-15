@@ -214,6 +214,13 @@ class PersonalDataPageMore(BasePage):
         self.click_element(self.submit_button())
 
     def edit_personal_data_more(self, data):
+        logger.info(
+            f"Editing personal data with next values:\n"
+            f"name_phonetic: {data.name_phonetic}\n"
+            f"lastname_phonetic: {data.lastname_phonetic}\n"
+            f"middlename: {data.middlename}\n"
+            f"alternatename: {data.alternatename}\n"
+        )
         self.open_info()
         self.input_name_phonetic(data.name_phonetic)
         self.input_lastname_phonetic(data.lastname_phonetic)
@@ -283,6 +290,15 @@ class PersonalDataPageOptional(BasePage):
         self.click_element(self.submit_button())
 
     def edit_personal_data_optional(self, data):
+        logger.info(
+            f"Editing optional personal data with next values:\n"
+            f"individual_number: {data.individualnumber}\n"
+            f"institution: {data.institution}\n"
+            f"department: {data.department}\n"
+            f"phone1: {data.phone1}\n"
+            f"phone2: {data.phone2}\n"
+            f"address: {data.address}\n"
+        )
         self.open_info()
         self.individual_number_input(data.individualnumber)
         self.institution_input(data.institution)
@@ -321,6 +337,10 @@ class PersonalDataPageTag(BasePage):
         self.click_element(self.submit_button())
 
     def edit_personal_data_tag(self, data):
+        logger.info(
+            f"Editing optional personal data with next values:\n"
+            f"tag: {data.tag}\n"
+        )
         self.open_info()
         self.tag_input(data.tag)
         self.submit_changes()
