@@ -226,6 +226,7 @@ class PersonalDataPageMore(BasePage):
         self.input_lastname_phonetic(data.lastname_phonetic)
         self.input_middle_name(data.middlename)
         self.input_alternate_name(data.alternatename)
+        logger.info("Submitting changes.\n")
         self.submit_changes()
 
     def is_changed(self):
@@ -306,6 +307,7 @@ class PersonalDataPageOptional(BasePage):
         self.phone1_input(data.phone1)
         self.phone2_input(data.phone2)
         self.address_input(data.address)
+        logger.info("Submitting changes.\n")
         self.submit_changes()
 
     def is_changed(self):
@@ -343,6 +345,7 @@ class PersonalDataPageTag(BasePage):
         )
         self.open_info()
         self.tag_input(data.tag)
+        logger.info("Submitting changes.\n")
         self.submit_changes()
 
     def is_changed(self):
