@@ -25,6 +25,8 @@ pip install -r /path/to/requirements.txt
 * пустой логин
 * пустой пароль
 
+__тест-кейсы__: [на форму авторизации](https://docs.google.com/spreadsheets/d/1OQ8zjJmgeb0Bb6UenDapVIFmVbjRmoW0eBtqThQK5xA/edit#gid=0)
+
 __Запуск в файле__: tests/auth/test_auth.py
 
 ### Тест по обновлению персональных данных
@@ -33,6 +35,9 @@ __Запуск в файле__: tests/auth/test_auth.py
 
 Негативные проверки обязательных полей:
 * поочередное заполнение обязательных полей формы невалидными данными
+
+__тест-кейсы__: [на форму заполнения персональных данных](https://docs.google.com/spreadsheets/d/1OQ8zjJmgeb0Bb6UenDapVIFmVbjRmoW0eBtqThQK5xA/edit#gid=1621977626)
+
 __Запуск в файле__: \tests\personal_data\test_personal_data.py
 
 ### Тест проверки формы регистрации
@@ -41,7 +46,18 @@ __Запуск в файле__: \tests\personal_data\test_personal_data.py
 
 Негативные проверки обязательных полей:
 * поочередное заполнение обязательных полей формы невалидными данными и проверка невозможности авторизации под новым пользователем
+
+__тест-кейсы__: [на форму регистрации](https://docs.google.com/spreadsheets/d/1OQ8zjJmgeb0Bb6UenDapVIFmVbjRmoW0eBtqThQK5xA/edit#gid=1310841361)
+
 __Запуск в файле__: tests/sign_up/test_sign_up.py
+
+### Тест проверки возможности создания и удаления курса
+Позитивные проверки:
+* заполнение формы валидными данными создание и удаление созданного курса 
+
+__тест-кейсы__: [на форму создания курса](https://docs.google.com/spreadsheets/d/1OQ8zjJmgeb0Bb6UenDapVIFmVbjRmoW0eBtqThQK5xA/edit#gid=1937322818)
+
+__Запуск в файле__: tests/create_course/test_course_creation.py
 
 ## Создание отчетов при помощи Allure
 ***
