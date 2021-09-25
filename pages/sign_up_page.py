@@ -4,7 +4,9 @@ from common.constants import SignUpConstants
 from locators.login_page_locators import LoginPageLocators
 from locators.sign_up_page_locators import SignUpLocators
 from pages.base_page import BasePage
+import logging
 
+logger = logging.getLogger("moodle")
 
 class SignUp(BasePage):
     def login_id_input(self) -> WebElement:
@@ -41,12 +43,21 @@ class SignUp(BasePage):
         return self.find_element(SignUpLocators.SEND_EMAIL_AGAIN_BUTTON)
 
     def sign_up(self, data):
+        logger.info(
+            f"Editing basic personal data with next values:\n"
+            f"login: {data.login}\n"
+            f"password: {data.password}\n"
+            f"firstname: {data.first_name}\n"
+            f"lastname: {data.last_name}\n"
+            f"email: {data.email}\n"
+        )
         self.fill_element(self.login_id_input(), data.login)
         self.fill_element(self.password_id_input(), data.password)
         self.fill_element(self.email_id_input(), data.email)
         self.fill_element(self.email_id_input_2(), data.email)
         self.fill_element(self.firstname_id_input(), data.first_name)
         self.fill_element(self.lastname_id_input(), data.last_name)
+        logger.info("Submitting changes.\n")
         self.click_element(self.create_new_account_button())
 
     def check_account_create(self):
