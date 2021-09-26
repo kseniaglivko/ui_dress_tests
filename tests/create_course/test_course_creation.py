@@ -50,7 +50,9 @@ class TestCourseCreation:
         "full_course_name, short_course_name",
         [[CC.random().full_course_name, None], [None, CC.random().short_course_name]],
     )
-    def test_invalid_course_creation(self, app, auth, full_course_name, short_course_name):
+    def test_invalid_course_creation(
+        self, app, auth, full_course_name, short_course_name
+    ):
         """
         Steps
         1. Authorize under admin.

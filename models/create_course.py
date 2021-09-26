@@ -4,6 +4,7 @@ from faker import Faker
 
 from common.constants import CreateCourseConstants
 
+
 fake = Faker("Ru-ru")
 
 
