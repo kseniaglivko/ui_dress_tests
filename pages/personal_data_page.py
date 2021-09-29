@@ -151,7 +151,7 @@ class PersonalDataPage(BasePage):
         logger.info("Submitting changes.\n")
         self.submit_changes()
 
-    def is_changed(self, wait_time=10):
+    def is_changed(self, wait_time=60):
         header_user_info_elements = WebDriverWait(self.app.driver, wait_time).until(
             EC.presence_of_all_elements_located(PersonalDataPageLocators.NAVBAR_ITEMS),
             message=f"Can't find elements by locator "

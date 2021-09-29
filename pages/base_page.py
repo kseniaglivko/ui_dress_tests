@@ -8,14 +8,14 @@ class BasePage:
     def __init__(self, app):
         self.app = app
 
-    def find_element(self, locator, wait_time=10):
+    def find_element(self, locator, wait_time=60):
         element = WebDriverWait(self.app.driver, wait_time).until(
             EC.presence_of_element_located(locator),
             message=f"Can't find element by locator {locator}",
         )
         return element
 
-    def find_clickable_element(self, locator, wait_time=10):
+    def find_clickable_element(self, locator, wait_time=60):
         element = WebDriverWait(self.app.driver, wait_time).until(
             EC.element_to_be_clickable(locator),
             message=f"Element not clickable {locator}",
