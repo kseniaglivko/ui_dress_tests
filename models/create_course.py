@@ -1,8 +1,10 @@
 import random
+import datetime
 
 from faker import Faker
 
 from common.constants import CreateCourseConstants
+
 
 fake = Faker("Ru-ru")
 
@@ -42,9 +44,9 @@ class CreateCourse:
 
     @staticmethod
     def random():
-        full_course_name = fake.job()
-        short_course_name = fake.word()
-        end_day = str(random.randint(1, 31))
+        full_course_name = fake.job() + str(datetime.datetime.now())
+        short_course_name = fake.word() + str(datetime.datetime.now())
+        end_day = str(random.randint(1, 28))
         end_month = str(random.randint(1, 12))
         end_year = str(
             random.randint(

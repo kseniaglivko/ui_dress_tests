@@ -1,5 +1,6 @@
 from faker import Faker
 
+
 fake = Faker("Ru-ru")
 
 
@@ -13,4 +14,3 @@ class AuthData:
         login = fake.email()
         password = fake.password()
         return AuthData(login, password)
-

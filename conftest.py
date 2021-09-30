@@ -2,13 +2,13 @@ import logging
 
 import allure
 import pytest
-
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 from pages.application import Application
 from models.auth import AuthData
+
 
 logger = logging.getLogger("moodle")
 
@@ -27,7 +27,8 @@ def app(request):
         )
     elif headless_mode == "false":
         fixture = Application(
-            webdriver.Chrome(ChromeDriverManager().install()), base_url,
+            webdriver.Chrome(ChromeDriverManager().install()),
+            base_url,
         )
     else:
         raise pytest.UsageError("--headless should be true or false")
@@ -62,10 +63,16 @@ def pytest_addoption(parser):
         help="enter base_url",
     ),
     parser.addoption(
-        "--username", action="store", default="nadi", help="enter username",
+        "--username",
+        action="store",
+        default="nadi",
+        help="enter username",
     ),
     parser.addoption(
-        "--password", action="store", default="Nadi123456!", help="enter password",
+        "--password",
+        action="store",
+        default="Nadi123456!",
+        help="enter password",
     ),
 
 

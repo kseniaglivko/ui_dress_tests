@@ -1,12 +1,14 @@
+import logging
+
 from selenium.webdriver.remote.webelement import WebElement
 
 from common.constants import SignUpConstants
-from locators.login_page_locators import LoginPageLocators
 from locators.sign_up_page_locators import SignUpLocators
 from pages.base_page import BasePage
-import logging
+
 
 logger = logging.getLogger("moodle")
+
 
 class SignUp(BasePage):
     def login_id_input(self) -> WebElement:

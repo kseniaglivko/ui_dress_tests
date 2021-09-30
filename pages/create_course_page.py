@@ -1,8 +1,10 @@
 import logging
 
 from selenium.webdriver.remote.webelement import WebElement
+
 from pages.base_page import BasePage
 from locators.create_course_page_locators import CreateCoursePageLocators
+
 
 logger = logging.getLogger("moodle")
 

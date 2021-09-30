@@ -1,6 +1,10 @@
 from pages.login_page import LoginPage
-from pages.personal_data_page import PersonalDataPage, PersonalDataPageMore, \
-    PersonalDataPageOptional, PersonalDataPageTag
+from pages.personal_data_page import (
+    PersonalDataPage,
+    PersonalDataPageMore,
+    PersonalDataPageOptional,
+    PersonalDataPageTag,
+)
 from pages.sign_up_page import SignUp
 from pages.create_course_page import CreateCoursePage
 from pages.course_page import CoursePage
