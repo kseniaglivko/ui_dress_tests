@@ -6,6 +6,12 @@ from models.auth import AuthData
 
 class TestAuth:
     def test_auth_valid_data(self, app):
+        """
+        Steps
+        1. Open main page
+        2. Auth with valid data
+        3. Check auth result
+        """
         app.open_auth_page()
         data = AuthData(login="rishat", password="Rishat-9173")
         app.login.auth(data)
