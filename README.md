@@ -1,4 +1,4 @@
-[![Build Status](https://app.travis-ci.com/berpress/ui_dress_tests.svg?branch=main)](https://app.travis-ci.com/berpress/ui_dress_tests)
+[![Build Status](http://kseniaglivko.teamcity.com/app/rest/builds/buildType:(id:UiDressTests_Build)/statusIcon)](https://kseniaglivko.teamcity.com/viewType.html?buildTypeId=UiDressTests_Build&guest=1)
 
 # Тесты для приложения ["Курсы"](https://qacoursemoodle.innopolis.university)
 
