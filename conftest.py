@@ -54,7 +54,7 @@ def pytest_addoption(parser):
         action="store",
         default="true",
         help="set 'true' if you want to run tests in headless mode of browser,\n"
-             "otherwise set 'false'",
+        "otherwise set 'false'",
     ),
     parser.addoption(
         "--base-url",
