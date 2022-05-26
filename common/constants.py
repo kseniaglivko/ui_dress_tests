@@ -1,5 +1,5 @@
 class LoginConstants:
-    AUTH_ERROR = "Неверный логин или пароль, попробуйте заново."
+    AUTH_ERROR = "Invalid login, please try again"
 
 
 class SignUpConstants:
