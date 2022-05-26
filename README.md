@@ -6,7 +6,7 @@
 
 ## Установка
 ***
-1. ```git clone https://github.com/berpress/ui_dress_tests```
+1. ```git clone https://github.com/kseniaglivko/ui_dress_tests.git```
 2. Открыть проект в IDE
 3. Активировать виртуальное окружение (*внимание: имеются переменные окружения!*)
 4. ```pip install -r requirements.txt```
