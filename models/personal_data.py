@@ -5,7 +5,7 @@ from faker import Faker
 from common.constants import PersonalDataConstants
 
 
-fake = Faker("Ru-ru")
+fake = Faker()
 
 
 class PersonalData:
@@ -24,7 +24,6 @@ class PersonalData:
         image_url=None,
         name_phonetic=None,
         lastnamephonetic=None,
-        middlename=None,
         alternatename=None,
         individualnumber=None,
         institution=None,
@@ -48,7 +47,6 @@ class PersonalData:
         self.image_url = image_url
         self.name_phonetic = name_phonetic
         self.lastname_phonetic = lastnamephonetic
-        self.middlename = middlename
         self.alternatename = alternatename
         self.individualnumber = individualnumber
         self.institution = institution
@@ -68,7 +66,7 @@ class PersonalData:
             list(PersonalDataConstants.EMAIL_DISPLAY_MODES.values())
         )
         moodle_net_profile = fake.url()
-        city = fake.city_name()
+        city = fake.city()
         timezone = random.choice(PersonalDataConstants.TIMEZONE_VALUES)
         country_code = fake.country_code()
         about = fake.text(max_nb_chars=200)
@@ -76,7 +74,6 @@ class PersonalData:
         image_url = fake.image_url()
         name_phonetic = name
         lastnamephonetic = last_name
-        middlename = fake.middle_name()
         alternatename = fake.first_name()
         individualnumber = fake.word()
         institution = fake.company()
@@ -100,7 +97,6 @@ class PersonalData:
             image_url,
             name_phonetic,
             lastnamephonetic,
-            middlename,
             alternatename,
             individualnumber,
             institution,

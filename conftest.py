@@ -1,4 +1,5 @@
 import logging
+import os
 
 import allure
 import pytest
@@ -9,11 +10,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from pages.application import Application
 from models.auth import AuthData
 
-
 logger = logging.getLogger("moodle")
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def app(request):
     base_url = request.config.getoption("--base-url")
     headless_mode = request.config.getoption("--headless").lower()
@@ -21,6 +21,8 @@ def app(request):
     if headless_mode == "true":
         chrome_options = Options()
         chrome_options.headless = True
+        chrome_options.add_argument("--window-size=1920,1080")
+        chrome_options.add_argument("--window-position=0,0")
         fixture = Application(
             webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options),
             base_url,
@@ -44,8 +46,6 @@ def auth(app, request):
     auth_data = AuthData(login=username, password=password)
     app.login.auth(auth_data)
     assert app.login.is_auth(), "You are not auth"
-    yield
-    app.login.sign_out()
 
 
 def pytest_addoption(parser):
@@ -53,25 +53,25 @@ def pytest_addoption(parser):
         "--headless",
         action="store",
         default="true",
-        help="enter 'true' if you want run tests in headless mode of browser,\n"
-        "enter 'false' - if not",
+        help="set 'true' if you want to run tests in headless mode of browser,\n"
+             "otherwise set 'false'",
     ),
     parser.addoption(
         "--base-url",
         action="store",
-        default="https://qacoursemoodle.innopolis.university",
-        help="enter base_url",
+        default="https://testcourseui.moodlecloud.com/",
+        help="enter base url",
     ),
     parser.addoption(
         "--username",
         action="store",
-        default="nadi",
+        default=os.environ["username"],
         help="enter username",
     ),
     parser.addoption(
         "--password",
         action="store",
-        default="Nadi123456!",
+        default=os.environ["password"],
         help="enter password",
     ),
 

@@ -57,4 +57,4 @@ class CoursePage(BasePage):
 
     def find_delete_confirmation(self) -> str:
         """Find second header at the bottom of the page."""
-        return self.find_elements(CoursePageLocators.COURSE_DELETE_CONFIRMATION)[1].text
+        return self.find_elements(CoursePageLocators.COURSE_DELETE_CONFIRMATION)[3].text

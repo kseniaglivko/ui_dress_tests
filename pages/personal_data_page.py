@@ -33,13 +33,10 @@ class PersonalDataPage(BasePage):
         email_display = self.find_select_element(PersonalDataPageLocators.EMAIL_DISPLAY)
         return email_display
 
-    def moodle_net_profile_input(self) -> WebElement:
-        return self.find_element(PersonalDataPageLocators.MOODLE_NET_PROFILE)
-
     def city_input(self) -> WebElement:
         return self.find_element(PersonalDataPageLocators.CITY_INPUT)
 
-    def counry_select(self) -> WebElement:
+    def country_select(self) -> WebElement:
         country_select = self.find_select_element(
             PersonalDataPageLocators.COUNTRY_SELECT
         )
@@ -57,11 +54,6 @@ class PersonalDataPage(BasePage):
     def user_image_file_add_button(self) -> WebElement:
         return self.find_clickable_element(
             PersonalDataPageLocators.USER_IMAGE_FILE_ADD_BUTTON
-        )
-
-    def download_file_section(self) -> WebElement:
-        return self.find_clickable_element(
-            PersonalDataPageLocators.DOWNLOAD_FILE_SECTION
         )
 
     def user_image_file_choose_input(self) -> WebElement:
@@ -99,14 +91,11 @@ class PersonalDataPage(BasePage):
     def select_email_display(self, value):
         self.select_value(self.email_display_select(), value)
 
-    def input_moodle_net_profile(self, url):
-        self.fill_element(self.moodle_net_profile_input(), url)
-
     def input_city(self, city):
         self.fill_element(self.city_input(), city)
 
     def select_country(self, value):
-        self.select_value(self.counry_select(), value)
+        self.select_value(self.country_select(), value)
 
     def select_timezone(self, value):
         self.select_value(self.timezone_select(), value)
@@ -117,7 +106,6 @@ class PersonalDataPage(BasePage):
     def choose_user_image_file(self, image_file):
         self.click_element(self.delete_current_image_button())
         self.click_element(self.user_image_file_add_button())
-        self.click_element(self.download_file_section())
         self.fill_element(self.user_image_file_choose_input(), image_file)
         self.click_element(self.download_file_button())
 
@@ -133,7 +121,6 @@ class PersonalDataPage(BasePage):
             f"name: {data.name}\n"
             f"lastname: {data.last_name}\n"
             f"email: {data.email}\n"
-            f"moodle_net_profile: {data.moodle_net_profile}\n"
             f"city: {data.city}\n"
             f"country_code: {data.country_code}\n"
             f"timezone: {data.timezone}\n"
@@ -143,13 +130,15 @@ class PersonalDataPage(BasePage):
         self.input_lastname(data.last_name)
         self.input_email(data.email)
         self.select_email_display(data.email_display_mode)
-        self.input_moodle_net_profile(data.moodle_net_profile)
         self.input_city(data.city)
         self.select_country(data.country_code)
         self.select_timezone(data.timezone)
         self.input_about(data.about)
         logger.info("Submitting changes.\n")
         self.submit_changes()
+
+    def alert_message(self):
+        return self.find_element(PersonalDataPageLocators.SUCCESS_ALERT).text
 
     def is_changed(self, wait_time=60):
         header_user_info_elements = WebDriverWait(self.app.driver, wait_time).until(
@@ -168,7 +157,7 @@ class PersonalDataPage(BasePage):
         self.submit_changes()
 
     def is_user_image_changed(self):
-        if self.is_changed() and not self.find_elements(
+        if self.alert_message() and not self.find_elements(
             PersonalDataPageLocators.USER_PROFILE_DEFAULT_PICTURE
         ):
             return True
@@ -193,9 +182,6 @@ class PersonalDataPageMore(BasePage):
             PersonalDataPageMoreLocators.LAST_NAME_PHONETIC
         )
 
-    def middle_name_input(self) -> WebElement:
-        return self.find_clickable_element(PersonalDataPageMoreLocators.MIDDLE_NAME)
-
     def alternate_name_input(self) -> WebElement:
         return self.find_clickable_element(PersonalDataPageMoreLocators.ALTERNATE_NAME)
 
@@ -204,9 +190,6 @@ class PersonalDataPageMore(BasePage):
 
     def input_lastname_phonetic(self, lastname_phonetic):
         self.fill_element(self.lastname_phonetic_input(), lastname_phonetic)
-
-    def input_middle_name(self, middle_name):
-        self.fill_element(self.middle_name_input(), middle_name)
 
     def input_alternate_name(self, alternate_name):
         self.fill_element(self.alternate_name_input(), alternate_name)
@@ -222,13 +205,11 @@ class PersonalDataPageMore(BasePage):
             f"Editing personal data with next values:\n"
             f"name_phonetic: {data.name_phonetic}\n"
             f"lastname_phonetic: {data.lastname_phonetic}\n"
-            f"middlename: {data.middlename}\n"
             f"alternatename: {data.alternatename}\n"
         )
         self.open_info()
         self.input_name_phonetic(data.name_phonetic)
         self.input_lastname_phonetic(data.lastname_phonetic)
-        self.input_middle_name(data.middlename)
         self.input_alternate_name(data.alternatename)
         logger.info("Submitting changes.\n")
         self.submit_changes()

@@ -1,4 +1,4 @@
-[![Build Status](https://app.travis-ci.com/berpress/ui_dress_tests.svg?branch=main)](https://app.travis-ci.com/berpress/ui_dress_tests)
+[![Build Status](http://kseniaglivko.teamcity.com/app/rest/builds/buildType:(id:UiDressTests_Build)/statusIcon)](https://kseniaglivko.teamcity.com/viewType.html?buildTypeId=UiDressTests_Build&guest=1)
 
 # Тесты для приложения ["Курсы"](https://qacoursemoodle.innopolis.university)
 
@@ -6,12 +6,11 @@
 
 ## Установка
 ***
-1. Создайте отдельную директорию на локальном компьютере
-2. Скачайте все файлы которые расположены в [директории](https://github.com/berpress/ui_dress_tests) <br>
-   git clone https://github.com/berpress/ui_dress_tests
-3. Откройте проект
-4. Установите все пакеты, которые указаны в файле requirements.txt <br>
-pip install -r /path/to/requirements.txt
+1. ```git clone https://github.com/berpress/ui_dress_tests```
+2. Открыть проект в IDE
+3. Активировать виртуальное окружение (*внимание: имеются переменные окружения!*)
+4. ```pip install -r requirements.txt```
+5. ```pre-commit install```
 
 
 ## Описание проекта

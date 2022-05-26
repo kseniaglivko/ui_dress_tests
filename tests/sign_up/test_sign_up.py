@@ -5,6 +5,7 @@ from models.sign_up import SignUpData
 
 
 class TestSignUp:
+    @pytest.mark.skip(reason="Functionality removed")
     def test_valid_sign_up_data(self, app):
         """
         Steps
@@ -33,6 +34,7 @@ class TestSignUp:
         app.login.auth(data_auth)
         assert app.sign_up.check_new_account_log_in(), "We are not auth"
 
+    @pytest.mark.skip(reason="Functionality removed")
     @pytest.mark.parametrize(
         "field", ["login", "password", "email", "first_name", "last_name"]
     )

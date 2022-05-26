@@ -6,6 +6,10 @@ class SignUpConstants:
     SIGN_UP_PAGE_URL = "https://qacoursemoodle.innopolis.university/login/signup.php?"
 
 
+class UserInfoConstants:
+    SUCCESS_ALARM = "×\nChanges saved"
+
+
 class PersonalDataConstants:
     EMAIL_DISPLAY_MODES = {
         "hidden": "0",
@@ -24,7 +28,7 @@ class PersonalDataConstants:
 
 
 class CourseConstants:
-    DELETED_COURSE = "был полностью удален"
+    DELETED_COURSE = "has been completely deleted"
 
 
 class CreateCourseConstants:
